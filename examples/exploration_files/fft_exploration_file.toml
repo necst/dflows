@@ -1,0 +1,3 @@
+["src/main/scala/generation/explore/FftExplore.scala"]
+["src/main/scala/generation/explore/FftExplore.scala"."FftWrapper2"]
+parallelism = {range=[2, 128], step="powers_of_two"}
