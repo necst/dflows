@@ -1,0 +1,29 @@
+flow = "manual_hls_vitis_custom"
+
+project_root = "faber_fpga"
+
+target_file = "dse_scripts/dse_driver.h"
+
+task_file = "exploration_files/faber_exploration_file.csv"
+
+board = "xczu3eg-sbva484-1-i"
+
+verbose = true
+
+clock_port = "ap_clk" # refers to the clock port of the generated module
+
+custom_metrics_folder = "custom_metrics"
+
+[metrics]
+default = ["CLB LUTs*", "CLB Registers","Block RAM Tile","DSPs","frequency"]
+
+[extra]
+[extra.generate]
+command = "faketime '2021-12-2' ../make_faber.bash" # the command is ran from the work directory
+# the above script generates rocket chip verilog and puts it into a chisel_generated folder inside the working directory
+project_root = "hls_generated"
+#target_file = "solution1/syn/verilog/mutual_information_master.v"
+target_file = "verilog/wax_cc_accel.v"
+target_clock = 200
+#target_module = "mutual_information_master"
+target_module = "wax_cc_accel"

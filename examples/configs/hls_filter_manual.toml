@@ -13,12 +13,14 @@ clock_port = "ap_clk" # refers to the clock port of the generated module
 custom_metrics_folder = "custom_metrics"
 
 [metrics]
-default = ["Slice LUTs*", "frequency"]
-custom=["test_metric", "another_test_metric"]
+default = ["Slice LUTs*", "Block RAM Tile", "DSPs", "frequency"]
+custom=[]
+
+target_module = "Filter2DKernel_Filter2D"
 
 [extra]
 [extra.vitis]
 project_root = "solution1/syn/verilog"
-target_file = "Filter2DKernel.v"
-target_clock = 100
+target_file = "Filter2DKernel_Filter2D.v"
+target_clock = 250
 target_module = "Filter2DKernel"

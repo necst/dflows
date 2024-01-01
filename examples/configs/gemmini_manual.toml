@@ -1,0 +1,27 @@
+flow = "manual_chisel_vivado"
+
+project_root = "../../testing-chipyard-setup/chipyard/generators/gemmini/configs"
+
+target_file = "GemminiDefaultConfigs.scala"
+
+task_file = "exploration_files/gemmini_exploration_file.csv" # if csv we go points mode, if toml we go space mode
+
+board = "xc7k70tfbv676-1"
+
+clock_port = "clock"
+
+custom_metrics_folder = "custom_metrics"
+
+verbose = true
+
+[metrics]
+default = ["Slice LUTs*", "Slice Registers", "Block RAM Tile", "DSPs", "frequency"]
+custom=["test_metric"]
+
+[extra]
+[extra.generate]
+command = "bash ../make_gammini.bash" # the command is ran from the work directory
+# the above script generates rocket chip verilog and puts it into a chisel_generated folder inside the working directory
+project_root = "chisel_generated" # this is given with respect to dovado_work
+target_file = "chipyard.TestHarness.CustomGemminiSoCConfig.top.v" # generated file containing target module relative to root
+target_module = "Gemmini"
