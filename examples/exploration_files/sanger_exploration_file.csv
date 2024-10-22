@@ -1,0 +1,13 @@
+src/test/scala/pe_row/pe_row_test.scala/DSEParams/pes,src/test/scala/pe_row/pe_row_test.scala/DSEParams/bits
+2,16
+4,16
+8,16
+16,16
+2,24
+4,24
+8,24
+16,24
+2,32
+4,32
+8,32
+16,32

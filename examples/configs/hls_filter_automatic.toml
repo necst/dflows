@@ -10,8 +10,10 @@ board = "xc7k70tfbv676-1"
 
 clock_port = "ap_clk" # refers to the clock port of the generated module
 
+verbose = true
+
 [metrics]
-default = ["Slice LUTs*", "frequency"]
+default = ["Slice LUTs*", "Block RAM Tile", "DSPs", "frequency"]
 
 [extra]
 [extra.vitis]

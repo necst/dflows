@@ -1,0 +1,4 @@
+["src/main/scala/generation/explore/GemmExplore.scala"]
+["src/main/scala/generation/explore/GemmExplore.scala"."GemmWrapper2"]
+dim = {range=[16, 512], step="powers_of_two"}
+bitWidth = {range=[32, 512], step="powers_of_two"}

@@ -1,0 +1,27 @@
+flow = "manual_chisel_vivado"
+
+project_root = "qece-benchmark"
+
+target_file = "src/main/scala/generation/explore/GemmExplore.scala"
+
+task_file = "exploration_files/gemm_exploration_file.csv" # if csv we go points mode, if toml we go space mode
+
+board = "xc7z020clg484-1"
+
+clock_port = "clock"
+
+custom_metrics_folder = "custom_metrics"
+
+verbose = true
+
+[metrics]
+default = ["Slice LUTs*","Slice Registers","Block RAM Tile","DSPs","frequency"]
+custom=["gemm_throughput"]
+
+[extra]
+[extra.generate]
+command = "bash ../make_gemm.bash" # the command is ran from the work directory
+# the above script generates rocket chip verilog and puts it into a chisel_generated folder inside the working directory
+project_root = "chisel_generated" # this is given with respect to dovado_work
+target_file = "GemmWrapper2.v" # generated file containing target module relative to root
+target_module = "GemmWrapper2"

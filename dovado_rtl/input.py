@@ -45,7 +45,7 @@ class Input(ImmutableModel):
     synthesis_directive: SYNTHESIS_DIRECTIVE = "RuntimeOptimized"
     place_directive: PLACE_DIRECTIVE = "RuntimeOptimized"
     route_directive: ROUTE_DIRECTIVE = "RuntimeOptimized"
-    target_clock: float = 1000  # target clock in Mhz
+    target_clock: float = 100  # target clock in Mhz
     target_module: Optional[
         str
     ] = None  # if the target file contains only one module may be left unspecified

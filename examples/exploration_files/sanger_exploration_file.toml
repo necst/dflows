@@ -1,0 +1,4 @@
+["src/test/scala/pe_row/pe_row_test.scala"]
+["src/test/scala/pe_row/pe_row_test.scala"."DSEParams"]
+pes = {range=[2, 32], step="powers_of_two"}
+bits = {range=[16, 32], step=8}

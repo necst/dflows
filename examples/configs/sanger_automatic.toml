@@ -1,0 +1,34 @@
+flow = "automatic_chisel_vivado"
+
+project_root = "Sanger/hardware"
+
+target_file = "src/test/scala/pe_row/pe_row_test.scala"
+
+task_file = "exploration_files/sanger_exploration_file.toml" # if csv we go points mode, if toml we go space mode
+
+board = "xc7k70tfbv676-1"
+
+clock_port = "clock"
+
+custom_metrics_folder = "custom_metrics"
+
+verbose = true
+
+[genetic]
+algorithm = "AGEMOEA"
+
+[genetic.options]
+pop_size=4
+n_offsprings=4
+
+[metrics]
+default = ["Slice LUTs*", "DSPs"]
+custom=["sanger_latency"]
+
+[extra]
+[extra.generate]
+command = "bash ../make_sanger.bash" # the command is ran from the work directory
+# the above script generates rocket chip verilog and puts it into a chisel_generated folder inside the working directory
+project_root = "chisel_generated" # this is given with respect to dovado_work
+target_file = "Sparse_PE_Array.v" # generated file containing target module relative to root
+target_module = "Sparse_PE_Array"
