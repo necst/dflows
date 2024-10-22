@@ -5,7 +5,25 @@ import threading
 
 
 class Vivado:
-    def __init__(self) -> None:
+    #def __init__(self) -> None:
+        #self.__vivado = pexpect.spawnu(
+        #    "vivado -mode tcl -nolog -nojournal",
+        #    encoding="utf-8",
+        #    codec_errors="ignore",
+        #)
+        #self.__t_vivado_init = threading.Thread(
+        #    target=self.__vivado.expect, args=("Vivado%",)
+        #)
+        #self.__t_vivado_init.start()
+
+    def execute_command(self, command: str) -> str:
+        if not self.__vivado.isalive():
+            raise Exception(
+                "Could not start Vivado, is it installed?"
+                + " Is it in your PATH?\n"
+                + " Try running 'vivado -mode tcl' yourself and"
+                + " debug why it does not start"
+            )
         self.__vivado = pexpect.spawnu(
             "vivado -mode tcl -nolog -nojournal",
             encoding="utf-8",
@@ -16,20 +34,12 @@ class Vivado:
         )
         self.__t_vivado_init.start()
 
-    def execute_command(self, command: str) -> str:
-        if not self.__vivado.isalive():
-            raise Exception(
-                "Could not start Vivado, is it installed?"
-                + " Is it in your PATH?\n"
-                + " Try running 'vivado -mode tcl' yourself and"
-                + " debug why it does not start"
-            )
-        if self.__t_vivado_init:
-            print("Waiting for Vivado to start...")
-            self.__t_vivado_init.join()
-            self.__vivado.sendline("set_param tcl.collectionResultDisplayLimit Inf")
-            self.__vivado.expect("Vivado%", timeout=None)  # type: ignore
-            self.__t_vivado_init = None
+        #if self.__t_vivado_init:
+        print("Waiting for Vivado to start...")
+        self.__t_vivado_init.join()
+        self.__vivado.sendline("set_param tcl.collectionResultDisplayLimit Inf")
+        self.__vivado.expect("Vivado%", timeout=None)  # type: ignore
+        self.__t_vivado_init = None
 
         self.__vivado.sendline(command)
         self.__vivado.expect("Vivado%", timeout=None)  # type: ignore

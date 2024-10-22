@@ -4,7 +4,8 @@ import matplotlib.rcsetup as rcsetup
 import numpy as np
 import pandas as pd
 
-colors = ['#c7e9b4', '#7fcdbb', '#41b6c4', '#1d91c0', '#225ea8']
+#colors = ['#c7e9b4', '#7fcdbb', '#41b6c4', '#1d91c0', '#225ea8']
+colors = ['#e41a1c', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00', '#ffff33']
 
 def split_binary_df(data_frame):
     labels = data_frame.columns.values
